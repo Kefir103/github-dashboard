@@ -7,9 +7,8 @@
     "build": "npm-run-all styles client:prod",
     "client:dev": "webpack-dev-server --mode development --devtool inline-source-map --open --hot",
     "client:prod": "webpack -p",
-    "dev": "npm-run-all -p styles:w client:dev server:dev",
     "server:dev": "nodemon src/server/index.js",
-    "start": "node src/server/index.js",
+    "start": "npm-run-all -p styles:w client:dev server:dev",
     "styles": "node-sass src/client/styles/styles.scss -o public/",
     "styles:w": "npm run styles && node-sass src/client/styles/styles.scss -o public/ --watch --recursive"
   },
