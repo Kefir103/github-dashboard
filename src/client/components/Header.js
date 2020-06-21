@@ -5,5 +5,5 @@ export default function Header(props) {
         <div id={'header'}>
             <p>Пушкарев Е.В. | Тестовое задание для Frontend-стажера (Github Dashboard)</p>
         </div>
-    )
+    );
 }
