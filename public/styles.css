@@ -44,14 +44,14 @@
       content: '\1F50E'; }
 
 .list-item {
-  width: 98%;
+  width: 80%;
   margin: 10px auto;
   border: 1px solid lightgray;
   border-radius: 0.5px;
   transition: .2s ease-in;
   font-size: 1em; }
   .list-item:hover {
-    width: 99%;
+    width: 81%;
     font-size: 1.025em;
     cursor: pointer; }
 
