@@ -3,9 +3,9 @@ import { BrowserRouter, useHistory, Link, Router, Route, Switch } from 'react-ro
 import Header from './components/Header';
 import Repository from './components/Repository';
 import MainPage from './components/main_page/MainPage';
+import history from './history';
 
 export default function App(props) {
-    let history = useHistory();
     return (
         <BrowserRouter history={history}>
             <Header />

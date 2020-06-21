@@ -1,0 +1,14 @@
+.list-item {
+    width: 98%;
+    margin: 10px auto;
+    border: 1px solid lightgray;
+    border-radius: 0.5px;
+    transition: .2s ease-in;
+    font-size: 1em;
+
+    &:hover {
+        width: 99%;
+        font-size: 1.025em;
+        cursor: pointer;
+    }
+}

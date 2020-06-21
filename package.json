@@ -1,54 +1,56 @@
 {
-  "name": "pushkarev-avito-test",
-  "version": "1.0.0",
-  "description": "Тестовое задание для Frontend-стажера",
-  "main": "index.js",
-  "scripts": {
-    "build": "npm-run-all styles client:prod",
-    "client:dev": "webpack-dev-server --mode development --devtool inline-source-map --open --hot",
-    "client:prod": "webpack -p",
-    "server:dev": "nodemon src/server/index.js",
-    "start": "npm-run-all -p styles:w client:dev server:dev",
-    "styles": "node-sass src/client/styles/styles.scss -o public/",
-    "styles:w": "npm run styles && node-sass src/client/styles/styles.scss -o public/ --watch --recursive"
-  },
-  "keywords": [
-    "Avito",
-    "Github"
-  ],
-  "author": "Efim Pushkarev <pushkarevev@yandex.ru>",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "node-sass": "^4.14.0",
-    "npm-run-all": "^4.1.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router": "^5.1.2",
-    "react-router-dom": "^5.1.2",
-    "webpack": "^4.43.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/polyfill": "^7.8.7",
-    "@babel/preset-env": "^7.9.5",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/runtime": "^7.9.2",
-    "babel-loader": "^8.1.0",
-    "clean-webpack-plugin": "^3.0.0",
-    "css-loader": "^3.5.3",
-    "html-webpack-plugin": "^4.2.0",
-    "nodemon": "^2.0.3",
-    "prettier": "^2.0.5",
-    "prettier-plugin-packagejson": "^2.2.2",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^1.2.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
-  },
-  "engines": {
-    "node": "12.16.1",
-    "npm": "6.13.4"
-  }
+    "name": "pushkarev-avito-test",
+    "version": "1.0.0",
+    "description": "Тестовое задание для Frontend-стажера",
+    "keywords": [
+        "Avito",
+        "Github"
+    ],
+    "license": "ISC",
+    "author": "Efim Pushkarev <pushkarevev@yandex.ru>",
+    "main": "index.js",
+    "scripts": {
+        "build": "npm-run-all styles client:prod",
+        "client:dev": "webpack-dev-server --mode development --devtool inline-source-map --open --hot",
+        "client:prod": "webpack -p",
+        "server:dev": "nodemon src/server/index.js",
+        "start": "npm-run-all -p styles:w client:dev server:dev",
+        "styles": "node-sass src/client/styles/styles.scss -o public/",
+        "styles:w": "npm run styles && node-sass src/client/styles/styles.scss -o public/ --watch --recursive"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "node-sass": "^4.14.0",
+        "npm-run-all": "^4.1.5",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-router": "^5.1.2",
+        "react-router-dom": "^5.1.2",
+        "webpack": "^4.43.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.9.0",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/polyfill": "^7.8.7",
+        "@babel/preset-env": "^7.9.5",
+        "@babel/preset-react": "^7.9.4",
+        "@babel/runtime": "^7.9.2",
+        "babel-loader": "^8.1.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^3.5.3",
+        "history": "^4.10.1",
+        "html-webpack-plugin": "^4.2.0",
+        "nodemon": "^2.0.3",
+        "prettier": "^2.0.5",
+        "prettier-plugin-packagejson": "^2.2.2",
+        "sass-loader": "^8.0.2",
+        "style-loader": "^1.2.0",
+        "webpack-cli": "^3.3.11",
+        "webpack-dev-server": "^3.10.3"
+    },
+    "engines": {
+        "node": "12.16.1",
+        "npm": "6.13.4"
+    },
+    "proxy": "http://localhost:3000"
 }
