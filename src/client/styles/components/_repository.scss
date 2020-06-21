@@ -1,0 +1,37 @@
+.repository {
+    border: 1px solid lightgray;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    height: 100%;
+
+    .author {
+        border: none;
+    }
+
+    h3 {
+        margin: 0 0 10px;
+    }
+
+    h2 {
+        margin: 0 0 10px;
+    }
+
+    .back-button {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 9%;
+        padding-top: 10vh;
+        height: 100%;
+        opacity: 25%;
+        background: darkgray;
+        transition: .2s ease-in;
+
+        &:hover{
+            opacity: 75%;
+            color: black;
+            cursor: pointer;
+        }
+    }
+}

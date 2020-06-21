@@ -6,7 +6,8 @@ module.exports = {
     entry: ['@babel/polyfill', './src/client/index.js'],
     output: {
         path: path.join(__dirname, 'build'),
-        filename: "bundle.js"
+        filename: "bundle.js",
+        publicPath: "/"
     },
     module: {
         rules: [
@@ -27,9 +28,8 @@ module.exports = {
         port: 3000,
         hot: true,
         open: true,
-        proxy: {
-            '/api': 'http://localhost:3000'
-        },
+        contentBase: path.join(__dirname, 'build'),
+        compress: false,
         historyApiFallback: true
     },
     plugins: [

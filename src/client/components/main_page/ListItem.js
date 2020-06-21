@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
-import history from "../../history";
+import history from '../../history';
 
 export default function ListItem(props) {
     return (
-        <div className={'list-item'} onClick={() => {}}>
+        <div
+            className={'list-item'}
+            onClick={() => {
+                history.push(`/repos/${props.repository.name}`, {...props.repository});
+            }}>
             <h4>
                 {props.repository.name} ({props.repository.stargazers_count} звезд)
             </h4>
