@@ -32,7 +32,11 @@ export default class MainPage extends Component {
         } else {
             sessionStorage.removeItem('search');
         }
-        this.searchRepos(sessionStorage.getItem('page'), false);
+        sessionStorage.setItem('page', 1);
+        this.setState({
+            currentPage: 1
+        })
+        this.searchRepos(sessionStorage.getItem('page'));
     }
 
     handleCurrentPageChange(page) {
