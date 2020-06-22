@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import history from '../../history';
 import { num2str } from '../../localeFunctions';
 import Contributor from './Contributor';
+import { GITHUB_API_TOKEN } from '../../../../config';
 
 export default class Repository extends Component {
     constructor(props) {
@@ -14,7 +15,12 @@ export default class Repository extends Component {
     }
 
     componentDidMount() {
-        fetch(`${this.props.location.state.contributors_url}?per_page=10`)
+        fetch(`${this.props.location.state.contributors_url}?per_page=10`, {
+            method: 'GET',
+            headers: {
+                'Authorization': GITHUB_API_TOKEN, // Добавьте свой токен в файл config.js, либо удалите эту строку (наличие токена увеличит лимит запросов к API Github
+            },
+        })
             .then((response) => response.json())
             .then((result) => {
                 this.setState({
@@ -26,9 +32,11 @@ export default class Repository extends Component {
     render() {
         return (
             <div className={'repository'}>
-                <div className={'back-button'} onClick={() => {
-                    history.push('/');
-                }}>
+                <div
+                    className={'back-button'}
+                    onClick={() => {
+                        history.push('/');
+                    }}>
                     <p>&lArr; Назад</p>
                 </div>
                 <h2>{this.props.location.state.name}</h2>
@@ -73,7 +81,7 @@ export default class Repository extends Component {
                     <hr />
                     <h3>10 наиболее активных контрибьютера</h3>
                     {this.state.contributors.map((contributor, index) => (
-                        <Contributor contributor={contributor} index={index + 1}/>
+                        <Contributor contributor={contributor} index={index + 1} />
                     ))}
                 </div>
             </div>
