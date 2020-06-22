@@ -71,8 +71,16 @@ export default class Repository extends Component {
                         )
                     </p>
                     <hr />
-                    <p>Используемый язык: {this.props.location.state.language}</p>
-                    <p>Краткое описание: {this.props.location.state.description}</p>
+                    {this.props.location.state.language ? (
+                        <p>Используемый язык: {this.props.location.state.language}</p>
+                    ) : (
+                        ''
+                    )}
+                    {this.props.location.state.description ? (
+                        <p>Краткое описание: {this.props.location.state.description}</p>
+                    ) : (
+                        ''
+                    )}
                     <hr />
                     <h3>10 наиболее активных контрибьютера</h3>
                     {this.state.contributors.map((contributor, index) => (
