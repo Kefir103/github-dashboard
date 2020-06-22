@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import history from '../../history';
 import { num2str } from '../../localeFunctions';
 
@@ -11,8 +11,7 @@ export default function ListItem(props) {
             }}>
             <h4>
                 {props.repository.name} ({props.repository.stargazers_count}{' '}
-                {num2str(props.repository.stargazers_count, ['звезда', 'звезды', 'звезд'])}
-                )
+                {num2str(props.repository.stargazers_count, ['звезда', 'звезды', 'звезд'])})
             </h4>
             <p>Последнее изменение: {new Date(props.repository.pushed_at).toLocaleString()}</p>
             <p>

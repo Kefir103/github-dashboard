@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { useParams } from 'react-router';
 import history from '../../history';
 import { num2str } from '../../localeFunctions';
 import Contributor from './Contributor';
