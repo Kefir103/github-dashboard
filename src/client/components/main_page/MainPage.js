@@ -10,7 +10,7 @@ export default class MainPage extends Component {
         this.state = {
             repos: [],
             searchText: '',
-            currentPage: Number(localStorage.getItem('page')),
+            currentPage: Number(sessionStorage.getItem('page')),
             totalCount: 0,
         };
 
@@ -29,11 +29,11 @@ export default class MainPage extends Component {
     handleSubmitClick(event) {
         event.preventDefault();
         if (this.state.searchText) {
-            localStorage.setItem('search', this.state.searchText);
+            sessionStorage.setItem('search', this.state.searchText);
         } else {
-            localStorage.removeItem('search');
+            sessionStorage.removeItem('search');
         }
-        this.searchRepos(localStorage.getItem('page'), false);
+        this.searchRepos(sessionStorage.getItem('page'), false);
     }
 
     handleCurrentPageChange(page) {
@@ -47,11 +47,11 @@ export default class MainPage extends Component {
             page = 1;
         }
 
-        let url = `https://api.github.com/search/repositories?q=${localStorage.getItem(
+        let url = `https://api.github.com/search/repositories?q=${sessionStorage.getItem(
             'search'
         )}&sort=stars&order=desc&page=${page}&per_page=10`;
 
-        if (!localStorage.getItem('search')) {
+        if (!sessionStorage.getItem('search')) {
             url = `https://api.github.com/search/repositories?q=stars:>1&sort=stars&order=desc&page=${page}&per_page=10`;
         }
 
@@ -68,18 +68,18 @@ export default class MainPage extends Component {
                     totalCount: result.total_count,
                     currentPage: page,
                 });
-                localStorage.setItem('page', page.toString());
+                sessionStorage.setItem('page', page.toString());
             });
     }
 
     componentDidMount() {
-        this.searchRepos(localStorage.getItem('page'));
+        this.searchRepos(sessionStorage.getItem('page'));
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.state.currentPage !== prevState.currentPage) {
-            localStorage.setItem('page', this.state.currentPage);
-            this.searchRepos(localStorage.getItem('page'));
+            sessionStorage.setItem('page', this.state.currentPage);
+            this.searchRepos(sessionStorage.getItem('page'));
         }
     }
 
@@ -91,7 +91,7 @@ export default class MainPage extends Component {
                         type={'search'}
                         placeholder={'Введите имя репозитория'}
                         onChange={this.handleSearchInputChange}
-                        defaultValue={localStorage.getItem('search')}
+                        defaultValue={sessionStorage.getItem('search')}
                     />
                     <button type={'submit'} onClick={this.handleSubmitClick} />
                 </form>
