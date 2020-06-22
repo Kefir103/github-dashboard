@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ListItem from './ListItem';
 import Paginator from './Paginator';
-import { GITHUB_API_TOKEN } from '../../../../config';
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -57,9 +56,6 @@ export default class MainPage extends Component {
 
         fetch(url, {
             method: 'GET',
-            headers: {
-                'Authorization': GITHUB_API_TOKEN, // Добавьте свой токен в файл config.js, либо удалите эту строку (наличие токена увеличит лимит запросов к API Github
-            },
         })
             .then((response) => response.json())
             .then((result) => {

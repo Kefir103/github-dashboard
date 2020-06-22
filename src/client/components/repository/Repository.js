@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import history from '../../history';
 import { num2str } from '../../localeFunctions';
 import Contributor from './Contributor';
-import { GITHUB_API_TOKEN } from '../../../../config';
 
 export default class Repository extends Component {
     constructor(props) {
@@ -16,9 +15,6 @@ export default class Repository extends Component {
     componentDidMount() {
         fetch(`${this.props.location.state.contributors_url}?per_page=10`, {
             method: 'GET',
-            headers: {
-                'Authorization': GITHUB_API_TOKEN, // Добавьте свой токен в файл config.js, либо удалите эту строку (наличие токена увеличит лимит запросов к API Github
-            },
         })
             .then((response) => response.json())
             .then((result) => {
