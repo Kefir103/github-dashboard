@@ -1,10 +1,10 @@
 {
-    "name": "pushkarev-avito-test",
+    "name": "github-dashboard",
     "version": "1.0.0",
-    "description": "Тестовое задание для Frontend-стажера",
+    "description": "Github Dashboard",
     "keywords": [
-        "Avito",
-        "Github"
+        "Github",
+        "Github API"
     ],
     "license": "ISC",
     "author": "Efim Pushkarev <pushkarevev@yandex.ru>",
@@ -13,8 +13,8 @@
         "build": "npm-run-all styles client:prod",
         "client:dev": "webpack-dev-server --mode development --devtool inline-source-map --open --hot",
         "client:prod": "webpack -p",
-        "server:dev": "nodemon server.js",
         "dev": "npm-run-all -p styles:w client:dev server:dev",
+        "server:dev": "nodemon server.js",
         "start": "npm run build && node server.js",
         "styles": "node-sass src/client/styles/styles.scss -o public/",
         "styles:w": "npm run styles && node-sass src/client/styles/styles.scss -o public/ --watch --recursive"
