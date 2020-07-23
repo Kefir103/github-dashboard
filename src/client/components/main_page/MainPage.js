@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ListItem from './ListItem';
 import Paginator from './Paginator';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default class MainPage extends Component {
     constructor(props) {
@@ -87,13 +89,15 @@ export default class MainPage extends Component {
         return (
             <div className={'app-container'}>
                 <form id={'search-form'}>
+                    <button type={'submit'} onClick={this.handleSubmitClick}>
+                        <FontAwesomeIcon icon={faSearch} color={'whitesmoke'}/>
+                    </button>
                     <input
                         type={'search'}
                         placeholder={'Введите имя репозитория'}
                         onChange={this.handleSearchInputChange}
                         defaultValue={sessionStorage.getItem('search')}
                     />
-                    <button type={'submit'} onClick={this.handleSubmitClick} />
                 </form>
                 {this.state.repos && this.state.repos.length !== 0
                     ? [
