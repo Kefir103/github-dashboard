@@ -1,68 +1,71 @@
-#header {
-  position: sticky;
+header {
+  position: fixed;
   top: 0;
-  margin: 0;
-  padding: 10px;
-  min-height: 5vh;
-  max-width: 100%;
-  background: #333;
+  display: flex;
+  flex-direction: row;
+  background-color: #0072AA;
   color: whitesmoke;
-  text-align: start;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  font-size: 1.4em;
-  font-weight: bold;
-  z-index: 1; }
-  #header p {
-    margin: auto; }
+  width: 100%;
+  height: 80px;
+  align-items: center;
+  box-shadow: 5px 1px 8px 1px dimgray;
+  z-index: 1;
+  padding-left: 10px; }
 
-#search-form {
-  position: relative;
-  width: 300px;
-  margin: 5px auto; }
-  #search-form input[type='search'] {
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 2px solid gray;
-    height: 25px;
-    width: 100%;
-    outline: none; }
-  #search-form button[type='submit'] {
-    box-sizing: border-box;
-    cursor: pointer;
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0;
-    border: 2px solid gray;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
-    outline: none; }
-    #search-form button[type='submit']::before {
-      content: '\1F50E'; }
+.app-container {
+  margin: 80px auto 0;
+  padding: 15px;
+  background-color: whitesmoke; }
+  .app-container #search-form {
+    position: relative;
+    width: 300px;
+    margin: 5px auto; }
+    .app-container #search-form input[type='search'] {
+      box-sizing: border-box;
+      border-radius: 5px;
+      border: 2px solid gray;
+      height: 25px;
+      width: 100%;
+      outline: none; }
+    .app-container #search-form button[type='submit'] {
+      box-sizing: border-box;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0;
+      border: 2px solid gray;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+      outline: none; }
+      .app-container #search-form button[type='submit']::before {
+        content: '\1F50E'; }
 
 .list-item {
   width: 80%;
   margin: 10px auto;
-  border: 1px solid lightgray;
+  border: 1px solid darkgray;
   border-radius: 0.5px;
   transition: .2s ease-in;
-  font-size: 1em; }
-  .list-item:hover {
+  font-size: 1em;
+  background-color: whitesmoke; }
+  .list-item:hover, .list-item :focus, .list-item :active {
     width: 81%;
     font-size: 1.025em;
-    cursor: pointer; }
+    cursor: pointer;
+    background-color: #e0e0e0;
+    border: 2px solid gray; }
 
 .repository {
-  border: 1px solid lightgray;
+  border: 1px solid darkgray;
   width: 80%;
-  margin: 10px auto;
   padding: 10px;
   height: 100%; }
   .repository .author {
-    border: none; }
+    border: none;
+    margin: 10px auto; }
   .repository h3 {
     margin: 0 0 10px; }
   .repository h2 {
@@ -70,21 +73,20 @@
   .repository .back-button {
     position: fixed;
     left: 0;
-    top: 0;
+    top: 80px;
     width: 9%;
-    padding-top: 10vh;
     height: 100%;
-    opacity: 25%;
-    background: darkgray;
+    opacity: 0.15;
+    background-color: #0072AA;
+    color: whitesmoke;
     transition: .2s ease-in; }
     .repository .back-button:hover {
-      opacity: 75%;
-      color: black;
+      opacity: 0.4;
       cursor: pointer; }
 
 .contributor {
   width: 75%;
-  border: 1px solid lightgray;
+  border: 1px solid darkgray;
   margin: 10px auto;
   padding: 5px; }
   .contributor h4 {

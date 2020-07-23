@@ -1,14 +1,17 @@
 .list-item {
     width: 80%;
     margin: 10px auto;
-    border: 1px solid lightgray;
+    border: 1px solid darkgray;
     border-radius: 0.5px;
     transition: .2s ease-in;
     font-size: 1em;
+    background-color: whitesmoke;
 
-    &:hover {
+    &:hover,:focus,:active {
         width: 81%;
         font-size: 1.025em;
         cursor: pointer;
+        background-color: #e0e0e0;
+        border: 2px solid gray;
     }
 }

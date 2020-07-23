@@ -85,7 +85,7 @@ export default class MainPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className={'app-container'}>
                 <form id={'search-form'}>
                     <input
                         type={'search'}

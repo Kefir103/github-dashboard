@@ -26,7 +26,7 @@ export default class Repository extends Component {
 
     render() {
         return (
-            <div className={'repository'}>
+            <div className={'app-container repository'}>
                 <div
                     className={'back-button'}
                     onClick={() => {

@@ -1,12 +1,12 @@
 .repository {
-    border: 1px solid lightgray;
+    border: 1px solid darkgray;
     width: 80%;
-    margin: 10px auto;
     padding: 10px;
     height: 100%;
 
     .author {
         border: none;
+        margin: 10px auto;
     }
 
     h3 {
@@ -20,17 +20,16 @@
     .back-button {
         position: fixed;
         left: 0;
-        top: 0;
+        top: 80px;
         width: 9%;
-        padding-top: 10vh;
         height: 100%;
-        opacity: 25%;
-        background: darkgray;
+        opacity: 0.15;
+        background-color: #0072AA;
+        color: whitesmoke;
         transition: .2s ease-in;
 
         &:hover{
-            opacity: 75%;
-            color: black;
+            opacity: 0.4;
             cursor: pointer;
         }
     }
