@@ -11,4 +11,12 @@ header {
     box-shadow: 5px 1px 8px 1px dimgray;
     z-index: 1;
     padding-left: 10px;
+
+    .contact-links {
+        margin-right: 20px;
+
+        &:first-of-type {
+            margin-left: auto;
+        }
+    }
 }

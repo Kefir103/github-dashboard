@@ -11,6 +11,10 @@ header {
   box-shadow: 5px 1px 8px 1px dimgray;
   z-index: 1;
   padding-left: 10px; }
+  header .contact-links {
+    margin-right: 20px; }
+    header .contact-links:first-of-type {
+      margin-left: auto; }
 
 .app-container {
   margin: 80px auto 0;
