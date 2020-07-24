@@ -26,7 +26,6 @@ export default function Paginator(props) {
 
     function handlePageElementClick(event) {
         event.preventDefault();
-        console.log(event.target.value);
         props.handleElementChanged(Number(event.target.value));
     }
 
