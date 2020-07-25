@@ -14,3 +14,7 @@ export const FILTER = {
     SET_SEARCH_TEXT: 'text/setSearchText',
     GET_SEARCH_TEXT: 'text/getSearchText',
 };
+
+export const APP_STATUS = {
+    CHANGE_LOAD_STATUS: 'app/changeLoadingStatus'
+}

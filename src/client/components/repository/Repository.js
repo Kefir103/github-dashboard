@@ -9,6 +9,7 @@ import {
     setCurrentRepository,
 } from '../../redux/actions/repoActions';
 import { connect } from 'react-redux';
+import Loading from '../Loading';
 
 export function Repository(props) {
     useEffect(() => {
@@ -24,62 +25,72 @@ export function Repository(props) {
     }, []);
 
     return (
-        <div className={'app-container repository'}>
-            <div
-                className={'back-button'}
-                onClick={() => {
-                    history.push('/');
-                }}>
-                <p>&lArr; Назад</p>
-            </div>
-            <h2>{props.repository.name}</h2>
-            <p>
-                {props.repository.stargazers_count}{' '}
-                {num2str(props.repository.stargazers_count, ['звезда', 'звезды', 'звезд'])}
-            </p>
-            <a href={props.repository.html_url}>{props.repository.html_url}</a>
-            <hr />
-            {props.repository.owner ? (
-                <div className={'repository author'}>
-                    <h3>Автор репозитория</h3>
-                    {props.repository.owner.avatar_url ? (
-                        <img
-                            src={props.repository.owner.avatar_url}
-                            alt={props.repository.owner.avatar_url}
-                            width={'200px'}
-                            height={'200px'}
-                        />
+        <>
+            {!props.isLoading ? (
+                <div className={'app-container repository'}>
+                    <div
+                        className={'back-button'}
+                        onClick={() => {
+                            history.push('/');
+                        }}>
+                        <p>&lArr; Назад</p>
+                    </div>
+                    <h2>{props.repository.name}</h2>
+                    <p>
+                        {props.repository.stargazers_count}{' '}
+                        {num2str(props.repository.stargazers_count, ['звезда', 'звезды', 'звезд'])}
+                    </p>
+                    <a href={props.repository.html_url}>{props.repository.html_url}</a>
+                    <hr />
+                    {props.repository.owner ? (
+                        <div className={'repository author'}>
+                            <h3>Автор репозитория</h3>
+                            {props.repository.owner.avatar_url ? (
+                                <img
+                                    src={props.repository.owner.avatar_url}
+                                    alt={props.repository.owner.avatar_url}
+                                    width={'200px'}
+                                    height={'200px'}
+                                />
+                            ) : (
+                                ''
+                            )}
+                            <p
+                                style={{
+                                    marginTop: '0',
+                                }}>
+                                {props.repository.owner.login}
+                                <br /> (
+                                <a href={props.repository.owner.html_url}>
+                                    {props.repository.owner.html_url}
+                                </a>
+                                )
+                            </p>
+                            <hr />
+                        </div>
                     ) : (
                         ''
                     )}
-                    <p
-                        style={{
-                            marginTop: '0',
-                        }}>
-                        {props.repository.owner.login}
-                        <br /> (
-                        <a href={props.repository.owner.html_url}>
-                            {props.repository.owner.html_url}
-                        </a>
-                        )
-                    </p>
+                    {props.repository.language ? (
+                        <p>Используемый язык: {props.repository.language}</p>
+                    ) : (
+                        ''
+                    )}
+                    {props.repository.description ? (
+                        <p>Краткое описание: {props.repository.description}</p>
+                    ) : (
+                        ''
+                    )}
                     <hr />
+                    <h3>10 наиболее активных контрибьютера</h3>
+                    {props.contributors.map((contributor, index) => (
+                        <Contributor contributor={contributor} index={index + 1} />
+                    ))}
                 </div>
             ) : (
-                ''
+                <Loading />
             )}
-            {props.repository.language ? <p>Используемый язык: {props.repository.language}</p> : ''}
-            {props.repository.description ? (
-                <p>Краткое описание: {props.repository.description}</p>
-            ) : (
-                ''
-            )}
-            <hr />
-            <h3>10 наиболее активных контрибьютера</h3>
-            {props.contributors.map((contributor, index) => (
-                <Contributor contributor={contributor} index={index + 1} />
-            ))}
-        </div>
+        </>
     );
 }
 
@@ -87,6 +98,7 @@ const mapStateToProps = (state) => {
     return {
         contributors: state.repository.contributors,
         repository: state.repository.currentRepository,
+        isLoading: state.appStatus.isLoading,
     };
 };
 

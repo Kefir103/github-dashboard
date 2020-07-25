@@ -1,8 +1,10 @@
-import { combineReducers } from "redux";
-import { repoReducer } from "./repoReducer";
-import { filterReducer } from "./filterReducer";
+import { combineReducers } from 'redux';
+import { repoReducer } from './repoReducer';
+import { filterReducer } from './filterReducer';
+import { appStatusReducer } from './appStatusReducer';
 
 export const rootReducer = combineReducers({
     repository: repoReducer,
-    filter: filterReducer
+    filter: filterReducer,
+    appStatus: appStatusReducer,
 });

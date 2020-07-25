@@ -1,4 +1,5 @@
 import * as Types from '../actions/actionTypes';
+import { changeLoadingStatus } from './appStatusActions';
 
 export function setRepos(repos, totalCount) {
     return {
@@ -41,6 +42,7 @@ export function loadRepos(searchText, page) {
     return (dispatch) => {
         let repos = [];
         let totalCount = 0;
+        dispatch(changeLoadingStatus(true));
         fetch(url, {
             method: 'GET',
         })
@@ -56,12 +58,14 @@ export function loadRepos(searchText, page) {
                 repos = result.items;
                 totalCount = result.total_count;
                 dispatch(setRepos(repos, totalCount));
+                dispatch(changeLoadingStatus(false));
             });
     };
 }
 
 export function loadContributors(contributorsUrl) {
     return (dispatch) => {
+        dispatch(changeLoadingStatus(true));
         fetch(`${contributorsUrl}?per_page=10`, {
             method: 'GET',
         })
@@ -74,12 +78,14 @@ export function loadContributors(contributorsUrl) {
                     },
                 });
                 dispatch(setContributors(result));
+                dispatch(changeLoadingStatus(false));
             });
     };
 }
 
 export function loadCurrentRepository(repositoryName) {
     return (dispatch) => {
+        dispatch(changeLoadingStatus(true));
         fetch(`https://api.github.com/search/repositories?q=${repositoryName}&page=1&per_page=1`)
             .then((response) => response.json())
             .then((result) => {
@@ -90,6 +96,7 @@ export function loadCurrentRepository(repositoryName) {
                     },
                 });
                 dispatch(setCurrentRepository(result.items[0]));
+                dispatch(changeLoadingStatus(false));
             });
     };
 }
