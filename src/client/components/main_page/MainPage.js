@@ -1,29 +1,15 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import ListItem from './ListItem';
 import Paginator from './Paginator';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { bindActionCreators } from 'redux';
 import { loadRepos } from '../../redux/actions/repoActions';
 import {
     getCurrentPage,
-    getSearchText,
     setCurrentPage,
-    setSearchText,
 } from '../../redux/actions/filterActions';
 import { connect } from 'react-redux';
 
 function MainPage(props) {
-    const handleSearchInputChange = (event) => {
-        event.preventDefault();
-        props.actions.setSearchText(event.target.value);
-    };
-
-    const handleSubmitClick = (event) => {
-        event.preventDefault();
-        props.actions.loadRepos(props.searchText, props.currentPage);
-    };
-
     const handleCurrentPageChange = (page) => {
         props.actions.setCurrentPage(page);
     };
@@ -34,17 +20,6 @@ function MainPage(props) {
 
     return (
         <div className={'app-container'}>
-            <form id={'search-form'}>
-                <button type={'submit'} onClick={handleSubmitClick}>
-                    <FontAwesomeIcon icon={faSearch} color={'whitesmoke'} />
-                </button>
-                <input
-                    type={'search'}
-                    placeholder={'Введите имя репозитория'}
-                    onChange={handleSearchInputChange}
-                    defaultValue={props.searchText}
-                />
-            </form>
             {props.repos && props.repos.length !== 0
                 ? [
                       props.repos.map((repository) => {
@@ -65,7 +40,6 @@ const mapStateToProps = (state) => {
     return {
         repos: state.repository.repos,
         totalCount: state.repository.totalCount,
-        searchText: state.filter.searchText,
         currentPage: state.filter.currentPage,
     };
 };
@@ -77,8 +51,6 @@ const mapDispatchToProps = (dispatch) => {
                 loadRepos,
                 setCurrentPage,
                 getCurrentPage,
-                setSearchText,
-                getSearchText,
             },
             dispatch
         ),

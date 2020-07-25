@@ -8,33 +8,28 @@ header {
   width: 100%;
   height: 80px;
   align-items: center;
+  justify-content: center;
   box-shadow: 5px 1px 8px 1px dimgray;
   z-index: 1;
   padding-left: 10px; }
-  header .contact-links {
-    margin-right: 20px; }
-    header .contact-links:first-of-type {
-      margin-left: auto; }
-
-.app-container {
-  margin: 80px auto 0;
-  padding: 15px;
-  background-color: whitesmoke; }
-  .app-container #search-form {
+  header #search-form {
     position: relative;
-    width: 300px;
-    margin: 5px auto; }
-    .app-container #search-form input[type='search'] {
+    margin-left: auto;
+    margin-right: 0; }
+    header #search-form input[type='search'] {
       box-sizing: border-box;
       border-radius: 5px;
       border: 2px solid #0072AA;
       height: 35px;
-      width: 100%;
+      width: 220px;
       outline: none;
-      padding-left: 40px; }
-    .app-container #search-form button[type='submit'] {
+      padding-left: 40px;
+      transition: width .2s linear; }
+      header #search-form input[type='search']:focus {
+        width: 260px; }
+    header #search-form button[type='submit'] {
       box-sizing: border-box;
-      background-color: #0072AA;
+      background-color: whitesmoke;
       cursor: pointer;
       width: 35px;
       height: 35px;
@@ -43,9 +38,19 @@ header {
       left: 0;
       padding: 0;
       border: 2px solid #0072AA;
+      border-right: none;
       border-bottom-left-radius: 5px;
       border-top-left-radius: 5px;
       outline: none; }
+  header .contact-links {
+    margin-right: 20px; }
+    header .contact-links:first-of-type {
+      margin-left: 5px; }
+
+.app-container {
+  margin: 80px auto 0;
+  padding: 15px;
+  background-color: whitesmoke; }
 
 .list-item {
   width: 80%;
