@@ -30,7 +30,7 @@ function MainPage(props) {
 
     useEffect(() => {
         props.actions.loadRepos(props.searchText, props.currentPage);
-    }, [props.currentPage, props.totalCount]);
+    }, [props.currentPage]);
 
     return (
         <div className={'app-container'}>
