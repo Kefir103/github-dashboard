@@ -20,7 +20,7 @@ export function Repository(props) {
             );
         } else {
             props.actions.setCurrentRepository(props.location.state);
-            props.actions.loadContributors(props.repository.contributors_url);
+            props.actions.loadContributors(props.location.state.contributors_url);
         }
     }, []);
 
