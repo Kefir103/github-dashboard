@@ -3,6 +3,8 @@ export const REPO_INFO = {
     SET_REPOS: 'repos/setRepos',
     LOAD_CONTRIBUTORS: 'repos/loadContributors',
     SET_CONTRIBUTORS: 'repos/setContributors',
+    LOAD_CURRENT_REPOSITORY: 'repos/loadCurrentRepository',
+    SET_CURRENT_REPOSITORY: 'repos/setCurrentRepository',
     TOTAL_COUNT: 'repos/totalCount',
 };
 

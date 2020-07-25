@@ -19,6 +19,15 @@ export function setContributors(contributors) {
     };
 }
 
+export function setCurrentRepository(repository) {
+    return {
+        type: Types.REPO_INFO.SET_CURRENT_REPOSITORY,
+        payload: {
+            repository: repository,
+        },
+    };
+}
+
 export function loadRepos(searchText, page) {
     let url;
     if (!page) {
@@ -37,7 +46,7 @@ export function loadRepos(searchText, page) {
         })
             .then((response) => response.json())
             .then((result) => {
-                console.log('fetch', {
+                console.log('loadRepos', {
                     type: Types.REPO_INFO.LOAD_REPOS,
                     payload: {
                         repos: result.items,
@@ -58,7 +67,29 @@ export function loadContributors(contributorsUrl) {
         })
             .then((response) => response.json())
             .then((result) => {
+                console.log('loadContributors', {
+                    type: Types.REPO_INFO.LOAD_CONTRIBUTORS,
+                    payload: {
+                        contributors: result,
+                    },
+                });
                 dispatch(setContributors(result));
+            });
+    };
+}
+
+export function loadCurrentRepository(repositoryName) {
+    return (dispatch) => {
+        fetch(`https://api.github.com/search/repositories?q=${repositoryName}&page=1&per_page=1`)
+            .then((response) => response.json())
+            .then((result) => {
+                console.log('loadCurrentRepository', {
+                    type: Types.REPO_INFO.LOAD_CURRENT_REPOSITORY,
+                    payload: {
+                        repository: result.items[0],
+                    },
+                });
+                dispatch(setCurrentRepository(result.items[0]));
             });
     };
 }

@@ -15,7 +15,14 @@ export function repoReducer(state = initialState, action) {
             const { contributors } = action.payload;
             return {
                 ...state,
-                contributors: contributors
+                contributors: contributors,
+            };
+        }
+        case Types.REPO_INFO.SET_CURRENT_REPOSITORY: {
+            const { repository } = action.payload;
+            return {
+                ...state,
+                currentRepository: repository,
             };
         }
         default:

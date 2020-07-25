@@ -1,12 +1,16 @@
 import React from 'react';
 import history from '../../history';
 import { num2str } from '../../localeFunctions';
+import { bindActionCreators } from 'redux';
+import { setCurrentRepository } from '../../redux/actions/repoActions';
+import { connect } from 'react-redux';
 
-export default function ListItem(props) {
+export function ListItem(props) {
     return (
         <div
             className={'list-item'}
             onClick={() => {
+                props.actions.setCurrentRepository({ ...props.repository });
                 history.push(`/repos/${props.repository.name}`, { ...props.repository });
             }}>
             <h4>
@@ -20,3 +24,16 @@ export default function ListItem(props) {
         </div>
     );
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        actions: bindActionCreators(
+            {
+                setCurrentRepository,
+            },
+            dispatch
+        ),
+    };
+};
+
+export default connect(null, mapDispatchToProps)(ListItem);

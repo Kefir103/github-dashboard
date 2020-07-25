@@ -3,12 +3,24 @@ import history from '../../history';
 import { num2str } from '../../localeFunctions';
 import Contributor from './Contributor';
 import { bindActionCreators } from 'redux';
-import { loadContributors } from '../../redux/actions/repoActions';
+import {
+    loadContributors,
+    loadCurrentRepository,
+    setCurrentRepository,
+} from '../../redux/actions/repoActions';
 import { connect } from 'react-redux';
 
 export function Repository(props) {
     useEffect(() => {
-        props.actions.loadContributors(props.location.state.contributors_url);
+        if (!props.location.state || !props.repository) {
+            props.actions.loadCurrentRepository(props.match.params.name);
+            props.actions.loadContributors(
+                `https://api.github.com/repos/${props.match.params.name}/${props.match.params.name}/contributors`
+            );
+        } else {
+            props.actions.setCurrentRepository(props.location.state);
+            props.actions.loadContributors(props.repository.contributors_url);
+        }
     }, []);
 
     return (
@@ -20,53 +32,53 @@ export function Repository(props) {
                 }}>
                 <p>&lArr; Назад</p>
             </div>
-            <h2>{props.location.state.name}</h2>
+            <h2>{props.repository.name}</h2>
             <p>
-                {props.location.state.stargazers_count}{' '}
-                {num2str(props.location.state.stargazers_count, ['звезда', 'звезды', 'звезд'])}
+                {props.repository.stargazers_count}{' '}
+                {num2str(props.repository.stargazers_count, ['звезда', 'звезды', 'звезд'])}
             </p>
-            <a href={props.location.state.html_url}>{props.location.state.html_url}</a>
+            <a href={props.repository.html_url}>{props.repository.html_url}</a>
             <hr />
-            <div className={'repository author'}>
-                <h3>Автор репозитория</h3>
-                {props.location.state.owner.avatar_url ? (
-                    <img
-                        src={props.location.state.owner.avatar_url}
-                        alt={props.location.state.owner.avatar_url}
-                        width={'200px'}
-                        height={'200px'}
-                    />
-                ) : (
-                    ''
-                )}
-                <p
-                    style={{
-                        marginTop: '0',
-                    }}>
-                    {props.location.state.owner.login}
-                    <br /> (
-                    <a href={props.location.state.owner.html_url}>
-                        {props.location.state.owner.html_url}
-                    </a>
-                    )
-                </p>
-                <hr />
-                {props.location.state.language ? (
-                    <p>Используемый язык: {props.location.state.language}</p>
-                ) : (
-                    ''
-                )}
-                {props.location.state.description ? (
-                    <p>Краткое описание: {props.location.state.description}</p>
-                ) : (
-                    ''
-                )}
-                <hr />
-                <h3>10 наиболее активных контрибьютера</h3>
-                {props.contributors.map((contributor, index) => (
-                    <Contributor contributor={contributor} index={index + 1} />
-                ))}
-            </div>
+            {props.repository.owner ? (
+                <div className={'repository author'}>
+                    <h3>Автор репозитория</h3>
+                    {props.repository.owner.avatar_url ? (
+                        <img
+                            src={props.repository.owner.avatar_url}
+                            alt={props.repository.owner.avatar_url}
+                            width={'200px'}
+                            height={'200px'}
+                        />
+                    ) : (
+                        ''
+                    )}
+                    <p
+                        style={{
+                            marginTop: '0',
+                        }}>
+                        {props.repository.owner.login}
+                        <br /> (
+                        <a href={props.repository.owner.html_url}>
+                            {props.repository.owner.html_url}
+                        </a>
+                        )
+                    </p>
+                    <hr />
+                </div>
+            ) : (
+                ''
+            )}
+            {props.repository.language ? <p>Используемый язык: {props.repository.language}</p> : ''}
+            {props.repository.description ? (
+                <p>Краткое описание: {props.repository.description}</p>
+            ) : (
+                ''
+            )}
+            <hr />
+            <h3>10 наиболее активных контрибьютера</h3>
+            {props.contributors.map((contributor, index) => (
+                <Contributor contributor={contributor} index={index + 1} />
+            ))}
         </div>
     );
 }
@@ -74,6 +86,7 @@ export function Repository(props) {
 const mapStateToProps = (state) => {
     return {
         contributors: state.repository.contributors,
+        repository: state.repository.currentRepository,
     };
 };
 
@@ -82,6 +95,8 @@ const mapDispatchToProps = (dispatch) => {
         actions: bindActionCreators(
             {
                 loadContributors,
+                loadCurrentRepository,
+                setCurrentRepository,
             },
             dispatch
         ),

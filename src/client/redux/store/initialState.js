@@ -3,6 +3,7 @@ export const initialState = {
         repos: [],
         totalCount: 0,
         contributors: [],
+        currentRepository: {},
     },
     filter: {
         searchText: '',
