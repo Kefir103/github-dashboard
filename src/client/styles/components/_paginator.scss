@@ -16,12 +16,9 @@
     'Noto Color Emoji';
     font-size: 1em;
     font-weight: 500;
-
+    transition: background-color .2s linear;
     &:hover {
+        background-color: dimgray!important;
         cursor: pointer;
-    }
-
-    &, &:active, &:focus {
-        outline: none;
     }
 }
