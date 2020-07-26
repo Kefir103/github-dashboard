@@ -10,7 +10,7 @@ export const initialState = {
         currentRepository: null,
     },
     filter: {
-        searchText: '',
-        currentPage: 1,
+        searchText: sessionStorage.getItem('searchText') ? sessionStorage.getItem('searchText') : '',
+        currentPage: sessionStorage.getItem('page') ? Number(sessionStorage.getItem('page')) : 1,
     },
 };

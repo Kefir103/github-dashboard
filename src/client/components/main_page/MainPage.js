@@ -11,10 +11,13 @@ import Error from '../Error';
 function MainPage(props) {
     const handleCurrentPageChange = (page) => {
         props.actions.setCurrentPage(page);
+        props.actions.loadRepos(props.searchText, page);
     };
 
     useEffect(() => {
-        props.actions.loadRepos(props.searchText, props.currentPage);
+        if (props.repos.length === 0) {
+            props.actions.loadRepos(props.searchText, props.currentPage);
+        }
     }, [props.currentPage]);
 
     return (
@@ -52,6 +55,7 @@ const mapStateToProps = (state) => {
         repos: state.repository.repos,
         totalCount: state.repository.totalCount,
         currentPage: state.filter.currentPage,
+        searchText: state.filter.searchText,
         isLoading: state.appStatus.isLoading,
         catchedError: state.appStatus.catchedError,
     };
