@@ -1,5 +1,5 @@
 import * as Types from '../actions/actionTypes';
-import { changeLoadingStatus } from './appStatusActions';
+import { changeLoadingStatus, catchError } from './appStatusActions';
 
 export function setRepos(repos, totalCount) {
     return {
@@ -46,7 +46,7 @@ export function loadRepos(searchText, page) {
         fetch(url, {
             method: 'GET',
         })
-            .then((response) => response.json())
+            .then((response) => (response.ok ? response.json() : Promise.reject(response)))
             .then((result) => {
                 console.log('loadRepos', {
                     type: Types.REPO_INFO.LOAD_REPOS,
@@ -59,6 +59,11 @@ export function loadRepos(searchText, page) {
                 totalCount = result.total_count;
                 dispatch(setRepos(repos, totalCount));
                 dispatch(changeLoadingStatus(false));
+                dispatch(catchError(null));
+            })
+            .catch((error) => {
+                const { status, statusText, type } = error;
+                dispatch(catchError({ status, statusText, type }));
             });
     };
 }
@@ -69,7 +74,7 @@ export function loadContributors(contributorsUrl) {
         fetch(`${contributorsUrl}?per_page=10`, {
             method: 'GET',
         })
-            .then((response) => response.json())
+            .then((response) => (response.ok ? response.json() : Promise.reject(response)))
             .then((result) => {
                 console.log('loadContributors', {
                     type: Types.REPO_INFO.LOAD_CONTRIBUTORS,
@@ -79,6 +84,11 @@ export function loadContributors(contributorsUrl) {
                 });
                 dispatch(setContributors(result));
                 dispatch(changeLoadingStatus(false));
+                dispatch(catchError(null));
+            })
+            .catch((error) => {
+                const { status, statusText, type } = error;
+                dispatch(catchError({ status, statusText, type }));
             });
     };
 }
@@ -87,7 +97,7 @@ export function loadCurrentRepository(repositoryName) {
     return (dispatch) => {
         dispatch(changeLoadingStatus(true));
         fetch(`https://api.github.com/search/repositories?q=${repositoryName}&page=1&per_page=1`)
-            .then((response) => response.json())
+            .then((response) => response.ok ? response.json() : Promise.reject(response))
             .then((result) => {
                 console.log('loadCurrentRepository', {
                     type: Types.REPO_INFO.LOAD_CURRENT_REPOSITORY,
@@ -97,6 +107,11 @@ export function loadCurrentRepository(repositoryName) {
                 });
                 dispatch(setCurrentRepository(result.items[0]));
                 dispatch(changeLoadingStatus(false));
+                dispatch(catchError(null));
+            })
+            .catch(error => {
+                const { status, statusText, type } = error;
+                dispatch(catchError({ status, statusText, type }));
             });
     };
 }

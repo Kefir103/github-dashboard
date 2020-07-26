@@ -3,6 +3,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Repository from './components/repository/Repository';
 import MainPage from './components/main_page/MainPage';
+import Error from './components/Error';
 import history from './history';
 
 export default function App(props) {
@@ -10,8 +11,9 @@ export default function App(props) {
         <Router history={history}>
             <Header />
             <Switch>
-                <Route exact path={'/'} component={MainPage} />
-                <Route path={'/repos/:name'} component={Repository} />
+                <Route exact path='/' component={MainPage} />
+                <Route path='/repos/:name' component={Repository} />
+                <Route path='*' component={Error} />
             </Switch>
         </Router>
     );

@@ -1,12 +1,13 @@
 export const initialState = {
     appStatus: {
         isLoading: true,
+        catchedError: null,
     },
     repository: {
         repos: [],
         totalCount: 0,
         contributors: [],
-        currentRepository: {},
+        currentRepository: null,
     },
     filter: {
         searchText: '',

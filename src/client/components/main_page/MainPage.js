@@ -6,6 +6,7 @@ import { loadRepos } from '../../redux/actions/repoActions';
 import { getCurrentPage, setCurrentPage } from '../../redux/actions/filterActions';
 import { connect } from 'react-redux';
 import Loading from '../Loading';
+import Error from '../Error';
 
 function MainPage(props) {
     const handleCurrentPageChange = (page) => {
@@ -18,23 +19,29 @@ function MainPage(props) {
 
     return (
         <>
-            {!props.isLoading ? (
-                <div className={'app-container'}>
-                    {props.repos && props.repos.length !== 0
-                        ? [
-                              props.repos.map((repository) => {
-                                  return <ListItem repository={repository} />;
-                              }),
-                              <Paginator
-                                  handleElementChanged={handleCurrentPageChange}
-                                  currentPage={props.currentPage}
-                                  totalCount={props.totalCount}
-                              />,
-                          ]
-                        : ''}
-                </div>
+            {!props.catchedError ? (
+                <>
+                    {!props.isLoading ? (
+                        <div className={'app-container'}>
+                            {props.repos && props.repos.length !== 0
+                                ? [
+                                      props.repos.map((repository) => {
+                                          return <ListItem repository={repository} />;
+                                      }),
+                                      <Paginator
+                                          handleElementChanged={handleCurrentPageChange}
+                                          currentPage={props.currentPage}
+                                          totalCount={props.totalCount}
+                                      />,
+                                  ]
+                                : ''}
+                        </div>
+                    ) : (
+                        <Loading />
+                    )}
+                </>
             ) : (
-                <Loading />
+                <Error />
             )}
         </>
     );
@@ -46,6 +53,7 @@ const mapStateToProps = (state) => {
         totalCount: state.repository.totalCount,
         currentPage: state.filter.currentPage,
         isLoading: state.appStatus.isLoading,
+        catchedError: state.appStatus.catchedError,
     };
 };
 

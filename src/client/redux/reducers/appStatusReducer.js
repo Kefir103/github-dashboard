@@ -6,9 +6,16 @@ export function appStatusReducer(state = initialState, action) {
         case Types.APP_STATUS.CHANGE_LOAD_STATUS: {
             return {
                 ...state,
-                isLoading: action.payload.isLoading
-            }
+                isLoading: action.payload.isLoading,
+            };
         }
-        default: return state;
+        case Types.APP_STATUS.CATCHED_ERROR: {
+            return {
+                ...state,
+                catchedError: action.payload.catchedError,
+            };
+        }
+        default:
+            return state;
     }
 }

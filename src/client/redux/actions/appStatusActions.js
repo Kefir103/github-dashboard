@@ -8,3 +8,12 @@ export function changeLoadingStatus(isLoading) {
         }
     }
 }
+
+export function catchError(error) {
+    return {
+        type: Types.APP_STATUS.CATCHED_ERROR,
+        payload: {
+            catchedError: error
+        }
+    }
+}
