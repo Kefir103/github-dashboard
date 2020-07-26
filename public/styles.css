@@ -59,6 +59,9 @@ header {
       box-shadow: 5px 1px 8px 1px dimgray; }
       header #search-form input[type='search'] {
         width: 100%; }
+        header #search-form input[type='search']:focus {
+          width: 100%;
+          box-shadow: 0 0 4px 2px #93DBFF; }
     header .contact-links:first-of-type {
       margin-left: auto;
       margin-right: 20px; } }
