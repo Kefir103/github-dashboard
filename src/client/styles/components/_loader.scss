@@ -83,3 +83,13 @@
         transform: rotate(360deg);
     }
 }
+
+@media(max-width: 768px) {
+
+}
+
+@media(max-width: 425px) {
+    .lds-roller {
+        top: 125px;
+    }
+}

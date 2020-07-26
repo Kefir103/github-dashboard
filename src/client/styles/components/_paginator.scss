@@ -1,5 +1,4 @@
 .paginator {
-    height: 100%;
     margin: 7px auto;
 }
 
@@ -20,5 +19,17 @@
     &:hover {
         background-color: dimgray!important;
         cursor: pointer;
+    }
+}
+
+@media(max-width: 768px) {
+
+}
+
+@media(max-width: 425px) {
+    .paginator {
+        .page-element {
+            width: 5%;
+        }
     }
 }

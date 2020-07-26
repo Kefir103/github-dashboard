@@ -4,3 +4,14 @@
     background-color: whitesmoke;
 }
 
+@media(max-width: 768px){
+
+}
+
+@media(max-width: 425px) {
+    .app-container {
+        margin: 115px auto 0;
+        padding: 15px 0;
+    }
+}
+

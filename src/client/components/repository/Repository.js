@@ -67,11 +67,10 @@ export function Repository(props) {
                                             marginTop: '0',
                                         }}>
                                         {props.repository.owner.login}
-                                        <br /> (
+                                        <br />
                                         <a href={props.repository.owner.html_url}>
                                             {props.repository.owner.html_url}
                                         </a>
-                                        )
                                     </p>
                                     <hr />
                                 </div>
@@ -89,7 +88,7 @@ export function Repository(props) {
                                 ''
                             )}
                             <hr />
-                            <h3>10 наиболее активных контрибьютера</h3>
+                            <h3>10 наиболее активных контрибьютеров</h3>
                             {props.contributors.map((contributor, index) => (
                                 <Contributor contributor={contributor} index={index + 1} />
                             ))}

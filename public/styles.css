@@ -45,10 +45,33 @@ header {
     header .contact-links:first-of-type {
       margin-left: 5px; }
 
+@media (max-width: 425px) {
+  header {
+    padding: 0 10px; }
+    header h1 {
+      font-size: x-large; }
+    header #search-form {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      box-shadow: 5px 1px 8px 1px dimgray; }
+      header #search-form input[type='search'] {
+        width: 100%; }
+    header .contact-links:first-of-type {
+      margin-left: auto;
+      margin-right: 20px; } }
+
 .app-container {
   margin: 80px auto 0;
   padding: 15px;
   background-color: whitesmoke; }
+
+@media (max-width: 425px) {
+  .app-container {
+    margin: 115px auto 0;
+    padding: 15px 0; } }
 
 .list-item {
   width: 80%;
@@ -65,9 +88,17 @@ header {
     background-color: #e0e0e0;
     border: 2px solid gray; }
 
+@media (max-width: 425px) {
+  .list-item {
+    width: 95%; }
+    .list-item a {
+      padding: 5px;
+      display: block;
+      overflow: auto;
+      text-overflow: ellipsis; } }
+
 .repository {
-  width: 80%;
-  height: 100%; }
+  width: 80%; }
   .repository .author {
     border: none;
     margin: 10px auto; }
@@ -82,12 +113,25 @@ header {
     width: 9%;
     height: 100%;
     opacity: 0.15;
-    background-color: #0072AA;
+    background-color: #0072aa;
     color: whitesmoke;
-    transition: .2s ease-in; }
+    transition: 0.2s ease-in; }
     .repository .back-button:hover {
       opacity: 0.4;
       cursor: pointer; }
+
+@media (max-width: 425px) {
+  .repository {
+    width: 95%; }
+    .repository .author p {
+      width: 100%; }
+    .repository a {
+      padding: 5px;
+      display: block;
+      overflow: auto;
+      text-overflow: ellipsis; }
+    .repository .back-button {
+      display: none; } }
 
 .contributor {
   width: 75%;
@@ -97,8 +141,11 @@ header {
   .contributor h4 {
     margin: 5px; }
 
+@media (max-width: 425px) {
+  .contributor {
+    width: 90%; } }
+
 .paginator {
-  height: 100%;
   margin: 7px auto; }
 
 .page-element {
@@ -116,6 +163,10 @@ header {
   .page-element:hover {
     background-color: dimgray !important;
     cursor: pointer; }
+
+@media (max-width: 425px) {
+  .paginator .page-element {
+    width: 5%; } }
 
 .lds-roller {
   display: inline-block;
@@ -199,6 +250,10 @@ header {
     transform: rotate(0deg); }
   100% {
     transform: rotate(360deg); } }
+
+@media (max-width: 425px) {
+  .lds-roller {
+    top: 125px; } }
 
 .error h1 {
   font-size: xx-large; }

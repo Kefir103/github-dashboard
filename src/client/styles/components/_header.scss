@@ -54,3 +54,34 @@ header {
         }
     }
 }
+
+@media(max-width: 768px) {
+
+}
+
+@media(max-width: 425px) {
+    header {
+        padding: 0 10px;
+        h1 {
+            font-size: x-large;
+        }
+        #search-form {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            box-shadow: 5px 1px 8px 1px dimgray;
+            input[type='search'] {
+                width: 100%;
+            }
+        }
+
+        .contact-links {
+            &:first-of-type {
+                margin-left: auto;
+                margin-right: 20px;
+            }
+        }
+    }
+}

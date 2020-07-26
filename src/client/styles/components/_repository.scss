@@ -1,6 +1,5 @@
 .repository {
     width: 80%;
-    height: 100%;
 
     .author {
         border: none;
@@ -22,13 +21,40 @@
         width: 9%;
         height: 100%;
         opacity: 0.15;
-        background-color: #0072AA;
+        background-color: #0072aa;
         color: whitesmoke;
-        transition: .2s ease-in;
+        transition: 0.2s ease-in;
 
-        &:hover{
+        &:hover {
             opacity: 0.4;
             cursor: pointer;
+        }
+    }
+
+
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 425px) {
+    .repository {
+        width: 95%;
+
+        .author {
+            p {
+                width: 100%;
+            }
+        }
+
+        a {
+            padding: 5px;
+            display: block;
+            overflow: auto;
+            text-overflow: ellipsis;
+        }
+        .back-button {
+            display: none;
         }
     }
 }
