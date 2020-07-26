@@ -10,7 +10,9 @@ function Error(props) {
 }
 
 const mapStateToProps = (state) => {
-    catchedError: state.appStatus.catchedError;
+    return {
+        catchedError: state.appStatus.catchedError
+    };
 };
 
 export default connect(mapStateToProps)(Error);

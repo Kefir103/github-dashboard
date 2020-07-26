@@ -14,22 +14,18 @@ import Error from '../Error';
 
 export function Repository(props) {
     useEffect(() => {
-        if (!props.location.state || !props.repository) {
+        if (!props.repository) {
             props.actions.loadCurrentRepository(props.match.params.name);
-            props.actions.loadContributors(
-                `https://api.github.com/repos/${props.match.params.name}/${props.match.params.name}/contributors`
-            );
         } else {
-            props.actions.setCurrentRepository(props.location.state);
-            props.actions.loadContributors(props.location.state.contributors_url);
+            props.actions.loadContributors(props.repository.contributors_url);
         }
-    }, []);
+    }, [props.repository]);
 
     return (
         <>
             {!props.catchedError ? (
                 <>
-                    {!props.isLoading ? (
+                    {!props.isLoading && props.repository ? (
                         <div className={'app-container repository'}>
                             <div
                                 className={'back-button'}

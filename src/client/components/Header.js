@@ -5,7 +5,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getSearchText, setSearchText } from '../redux/actions/filterActions';
-import {loadRepos} from "../redux/actions/repoActions";
+import { loadRepos, setCurrentRepository } from '../redux/actions/repoActions';
+import history from '../history';
 
 function Header(props) {
     const handleSearchInputChange = (event) => {
@@ -15,7 +16,12 @@ function Header(props) {
 
     const handleSubmitClick = (event) => {
         event.preventDefault();
-        props.actions.loadRepos(props.searchText, props.currentPage);
+        if (history.location.pathname === '/') {
+            props.actions.loadRepos(props.searchText, props.currentPage);
+        } else if (history.location.pathname.substr(0, 6) === '/repos') {
+            props.actions.setCurrentRepository(null);
+            history.push(`/repos/${props.searchText}`);
+        }
     };
 
     return (
@@ -55,6 +61,7 @@ const mapDispatchToProps = (dispatch) => {
                 setSearchText,
                 getSearchText,
                 loadRepos,
+                setCurrentRepository,
             },
             dispatch
         ),

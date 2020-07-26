@@ -11,7 +11,7 @@ export function ListItem(props) {
             className={'list-item'}
             onClick={() => {
                 props.actions.setCurrentRepository({ ...props.repository });
-                history.push(`/repos/${props.repository.name}`, { ...props.repository });
+                history.push(`/repos/${props.repository.name}`);
             }}>
             <h4>
                 {props.repository.name} ({props.repository.stargazers_count}{' '}
