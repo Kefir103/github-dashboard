@@ -13,7 +13,8 @@ export default function Contributor(props) {
                     'контрибьюция',
                     'контрибьюции',
                     'контрибьюций',
-                ])})
+                ])}
+                )
             </p>
             <a href={props.contributor.html_url}>{props.contributor.html_url}</a>
         </div>

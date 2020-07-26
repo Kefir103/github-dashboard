@@ -17,5 +17,5 @@ export const FILTER = {
 
 export const APP_STATUS = {
     CHANGE_LOAD_STATUS: 'app/changeLoadingStatus',
-    CATCHED_ERROR: 'app/catchedError'
-}
+    CATCHED_ERROR: 'app/catchedError',
+};

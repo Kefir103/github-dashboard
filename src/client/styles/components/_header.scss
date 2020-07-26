@@ -3,7 +3,7 @@ header {
     top: 0;
     display: flex;
     flex-direction: row;
-    background-color: #0072AA;
+    background-color: #0072aa;
     color: whitesmoke;
     width: 100%;
     height: 80px;
@@ -25,10 +25,10 @@ header {
             outline: none;
             border: none;
             padding-left: 40px;
-            transition: width .2s linear, box-shadow .2s linear;
+            transition: width 0.2s linear, box-shadow 0.2s linear;
             &:focus {
                 width: 260px;
-                box-shadow: 0 0 4px 2px #93DBFF;
+                box-shadow: 0 0 4px 2px #93dbff;
             }
         }
         button[type='submit'] {
@@ -55,11 +55,10 @@ header {
     }
 }
 
-@media(max-width: 768px) {
-
+@media (max-width: 768px) {
 }
 
-@media(max-width: 425px) {
+@media (max-width: 425px) {
     header {
         padding: 0 10px;
         h1 {
@@ -76,7 +75,7 @@ header {
                 width: 100%;
                 &:focus {
                     width: 100%;
-                    box-shadow: 0 0 4px 2px #93DBFF;
+                    box-shadow: 0 0 4px 2px #93dbff;
                 }
             }
         }

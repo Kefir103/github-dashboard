@@ -48,13 +48,6 @@ export function loadRepos(searchText, page) {
         })
             .then((response) => (response.ok ? response.json() : Promise.reject(response)))
             .then((result) => {
-                console.log('loadRepos', {
-                    type: Types.REPO_INFO.LOAD_REPOS,
-                    payload: {
-                        repos: result.items,
-                        totalCount: result.total_count,
-                    },
-                });
                 repos = result.items;
                 totalCount = result.total_count;
                 dispatch(setRepos(repos, totalCount));
@@ -76,12 +69,6 @@ export function loadContributors(contributorsUrl) {
         })
             .then((response) => (response.ok ? response.json() : Promise.reject(response)))
             .then((result) => {
-                console.log('loadContributors', {
-                    type: Types.REPO_INFO.LOAD_CONTRIBUTORS,
-                    payload: {
-                        contributors: result,
-                    },
-                });
                 dispatch(setContributors(result));
                 dispatch(changeLoadingStatus(false));
                 dispatch(catchError(null));
@@ -97,19 +84,13 @@ export function loadCurrentRepository(repositoryName) {
     return (dispatch) => {
         dispatch(changeLoadingStatus(true));
         fetch(`https://api.github.com/search/repositories?q=${repositoryName}&page=1&per_page=1`)
-            .then((response) => response.ok ? response.json() : Promise.reject(response))
+            .then((response) => (response.ok ? response.json() : Promise.reject(response)))
             .then((result) => {
-                console.log('loadCurrentRepository', {
-                    type: Types.REPO_INFO.LOAD_CURRENT_REPOSITORY,
-                    payload: {
-                        repository: result.items[0],
-                    },
-                });
                 dispatch(setCurrentRepository(result.items[0]));
                 dispatch(changeLoadingStatus(false));
                 dispatch(catchError(null));
             })
-            .catch(error => {
+            .catch((error) => {
                 const { status, statusText, type } = error;
                 dispatch(catchError({ status, statusText, type }));
             });

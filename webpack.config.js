@@ -6,23 +6,21 @@ module.exports = {
     entry: ['@babel/polyfill', './src/client/index.js'],
     output: {
         path: path.join(__dirname, 'build'),
-        filename: "bundle.js",
-        publicPath: "/"
+        filename: 'bundle.js',
+        publicPath: '/',
     },
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
             },
             {
                 test: /\.(css|scss)$/,
-                loader: [
-                    'style-loader', 'css-loader', 'sass-loader'
-                ]
-            }
-        ]
+                loader: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+        ],
     },
     devServer: {
         port: 3001,
@@ -30,13 +28,13 @@ module.exports = {
         open: true,
         contentBase: path.join(__dirname, 'build'),
         compress: false,
-        historyApiFallback: true
+        historyApiFallback: true,
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: "./public/index.html",
-            favicon: "./public/favicon.ico"
-        })
-    ]
-}
+            template: './public/index.html',
+            favicon: './public/favicon.ico',
+        }),
+    ],
+};
