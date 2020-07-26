@@ -35,6 +35,11 @@
 }
 
 @media (max-width: 768px) {
+    .repository {
+        .back-button {
+            display: none;
+        }
+    }
 }
 
 @media (max-width: 425px) {

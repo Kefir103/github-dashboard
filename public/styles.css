@@ -123,6 +123,10 @@ header {
       opacity: 0.4;
       cursor: pointer; }
 
+@media (max-width: 768px) {
+  .repository .back-button {
+    display: none; } }
+
 @media (max-width: 425px) {
   .repository {
     width: 95%; }
