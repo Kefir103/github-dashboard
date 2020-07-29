@@ -7,7 +7,7 @@
     font-size: 1em;
     background-color: whitesmoke;
 
-    &:hover,:focus,:active {
+    &:hover,&:focus,&:active {
         width: 81%;
         font-size: 1.025em;
         cursor: pointer;
