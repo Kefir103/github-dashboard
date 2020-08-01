@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Error /> should be rendered correctly with catchedError 1`] = `
+<div
+  class="app-container error"
+>
+  <h1>
+    Упс :(
+  </h1>
+  <h2>
+    Произошла ошибочка...
+  </h2>
+  <h3>
+    (403 (statusText))
+  </h3>
+</div>
+`;
+
+exports[`<Error /> should be rendered correctly without catchedError 1`] = `
+<div
+  class="app-container error"
+>
+  <h1>
+    Упс :(
+  </h1>
+  <h2>
+    Произошла ошибочка...
+  </h2>
+</div>
+`;

@@ -17,7 +17,18 @@
         "server:dev": "nodemon server.js",
         "start": "npm run build && node server.js",
         "styles": "node-sass src/client/styles/styles.scss -o public/",
-        "styles:w": "npm run styles && node-sass src/client/styles/styles.scss -o public/ --watch --recursive"
+        "styles:w": "npm run styles && node-sass src/client/styles/styles.scss -o public/ --watch --recursive",
+        "test": "jest",
+        "test:coverage": "jest --coverage",
+        "test:watch": "jest --watch"
+    },
+    "jest": {
+        "setupFiles": [
+            "<rootDir>/setupTests"
+        ],
+        "snapshotSerializers": [
+            "<rootDir>/node_modules/enzyme-to-json/serializer"
+        ]
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.14.0",
@@ -50,14 +61,21 @@
         "@babel/preset-env": "^7.10.4",
         "@babel/preset-react": "^7.10.4",
         "@babel/runtime": "^7.10.5",
+        "babel-jest": "^26.1.0",
         "babel-loader": "^8.1.0",
         "clean-webpack-plugin": "^3.0.0",
         "css-loader": "^3.5.3",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
+        "enzyme-to-json": "^3.5.0",
         "history": "^4.10.1",
         "html-webpack-plugin": "^4.2.0",
+        "jest": "^26.1.0",
         "nodemon": "^2.0.3",
         "prettier": "^2.0.5",
         "prettier-plugin-packagejson": "^2.2.2",
+        "react-test-renderer": "^16.13.1",
+        "redux-mock-store": "^1.5.4",
         "sass-loader": "^8.0.2",
         "style-loader": "^1.2.0",
         "webpack-cli": "^3.3.11",

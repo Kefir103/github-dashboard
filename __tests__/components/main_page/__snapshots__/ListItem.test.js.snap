@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ListItem/> should be rendered correctly 1`] = `
+<div
+  class="list-item"
+>
+  <h4>
+    name (1 звезда)
+  </h4>
+  <p>
+    Последнее изменение: 2005-8-9 18:31:42
+  </p>
+  <p>
+    URL: 
+    <a
+      href="http://localhost:3000"
+    >
+      http://localhost:3000
+    </a>
+  </p>
+</div>
+`;
